@@ -1,0 +1,17 @@
+{
+  "name": "Trap Path",
+  "short_name": "Trap Path",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#e74c3c",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

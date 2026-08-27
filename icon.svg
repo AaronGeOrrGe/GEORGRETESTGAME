@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0d0d0d" rx="64"/>
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-width="18">
+    <!-- legs -->
+    <line x1="220" y1="300" x2="170" y2="380" stroke="#3498db"/>
+    <line x1="220" y1="300" x2="290" y2="370" stroke="#3498db"/>
+    <!-- body -->
+    <line x1="220" y1="300" x2="230" y2="210" stroke="#3498db"/>
+    <!-- arms -->
+    <line x1="230" y1="230" x2="300" y2="200" stroke="#3498db"/>
+    <line x1="230" y1="230" x2="170" y2="260" stroke="#3498db"/>
+    <!-- head -->
+    <circle cx="235" cy="165" r="28" fill="#f1c40f" stroke="none"/>
+  </g>
+  <!-- motion lines -->
+  <line x1="100" y1="360" x2="160" y2="360" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>
+  <line x1="80" y1="390" x2="140" y2="390" stroke="#e74c3c" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+</svg>

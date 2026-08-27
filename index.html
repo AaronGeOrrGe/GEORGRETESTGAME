@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trap Path</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#e74c3c" />
+  <link rel="stylesheet" href="style.css?v=27" />
+</head>
+<body>
+  <div id="game-wrapper">
+    <div id="game-area">
+      <canvas id="game" width="960" height="540"></canvas>
+
+      <div id="hud" class="hidden">
+        <div id="hud-left">
+          <div id="hud-level">LEVEL: 1</div>
+          <div id="hud-lives">LIVES: <span class="hearts">❤️❤️❤️</span></div>
+        </div>
+        <div id="hud-pause"><button id="btn-pause-hud" aria-label="Pause">⏸</button></div>
+        <div id="hud-right">
+          <div id="hud-coins">COINS: 0</div>
+        </div>
+      </div>
+
+      <div id="start-screen" class="screen">
+        <h1>TRAP PATH</h1>
+        <p>Can you reach the exit?</p>
+        <div id="intro-stage">
+          <div id="runner" class="runner">
+            <div class="r-head"></div>
+            <div class="r-torso"></div>
+            <div class="r-limb r-arm-l"></div>
+            <div class="r-limb r-arm-r"></div>
+            <div class="r-limb r-leg-l"></div>
+            <div class="r-limb r-leg-r"></div>
+          </div>
+          <div id="intro-credit">created by GEORGE</div>
+        </div>
+        <button id="btn-start">START GAME</button>
+      </div>
+
+      <div id="level-select" class="screen hidden">
+        <h1>SELECT LEVEL</h1>
+        <div id="level-buttons"></div>
+        <button id="btn-back">BACK</button>
+      </div>
+
+      <div id="pause-menu" class="screen hidden">
+        <h1>PAUSED</h1>
+        <button id="btn-resume">RESUME</button>
+        <button id="btn-restart">RESTART LEVEL</button>
+        <button id="btn-pause-levels">LEVEL SELECT</button>
+        <button id="btn-quit">QUIT TO MENU</button>
+      </div>
+
+      <div id="level-complete" class="screen hidden">
+        <h1>LEVEL COMPLETE!</h1>
+        <p id="level-complete-number">Level 1 complete</p>
+        <p id="level-coins">Coins: 0</p>
+        <button id="btn-continue">NEXT LEVEL</button>
+        <button id="btn-levels-complete">LEVEL SELECT</button>
+      </div>
+
+      <div id="game-over" class="screen hidden">
+        <h1>GAME OVER</h1>
+        <p id="refill-timer">No lives left</p>
+        <button id="btn-try-again" disabled>TRY AGAIN</button>
+        <button id="btn-levels-gameover">LEVEL SELECT</button>
+      </div>
+
+      <div id="victory-screen" class="screen hidden">
+        <h1>YOU ESCAPED!</h1>
+        <p id="victory-coins">Total coins: 0</p>
+        <p id="victory-deaths">Deaths: 0</p>
+        <button id="btn-levels-victory">LEVEL SELECT</button>
+        <button id="btn-restart-game">RESTART GAME</button>
+      </div>
+
+      <div id="level-start" class="screen hidden">
+        <h1 id="level-start-title">LEVEL 1</h1>
+      </div>
+
+      <div id="died-message" class="hidden">YOU DIED!</div>
+    </div>
+
+    <div id="mobile-controls" class="hidden">
+      <div class="m-controls-left">
+        <button id="m-left" class="m-btn" aria-label="Left">◀</button>
+        <button id="m-right" class="m-btn" aria-label="Right">▶</button>
+      </div>
+      <button id="m-jump" class="m-btn m-jump" aria-label="Jump">JUMP</button>
+    </div>
+  </div>
+
+  <script src="script.js?v=17"></script>
+</body>
+</html>
