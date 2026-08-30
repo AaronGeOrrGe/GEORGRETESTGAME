@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2455dc">
+  <title>Easy — Student Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Easy home"><span class="brand-mark">E</span><strong>Easy</strong></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#resources" data-page="resources">Resources</a>
+      <a href="#quizzes" data-page="quizzes">Quizzes</a>
+      <a href="#request" data-page="request">Request to join</a>
+      <a href="#timetable" data-page="timetable">Timetable</a>
+    </nav>
+    <div class="account"><button class="bell" aria-label="Notifications">♧<b>9+</b></button><button class="avatar">AG</button></div>
+  </header>
+
+  <main>
+    <section class="page" id="home">
+      <div class="page-heading"><div><h1>Hi, Akaribo</h1><p>2 groups assigned</p></div></div>
+      <div class="home-grid">
+        <div class="left-column">
+          <article class="card next-exam"><span class="eyebrow">NEXT EXAM</span><div class="exam-row"><div><h3>Financial Accounting</h3><strong class="blue">◷ 8:30 AM – 10:30 AM</strong><p>⌖ SF1/SF7/SF8/SF19/SF20/TF1/TF34</p></div><strong class="blue">3d</strong></div></article>
+          <div class="section-label">MY GROUPS</div>
+          <div id="groups"></div>
+          <div class="section-heading"><span>LATEST RESOURCES</span><a href="#resources">Open library ›</a></div>
+          <article class="card empty-note">Your latest course resources will appear here.</article>
+        </div>
+        <aside class="right-column">
+          <article class="card viewed"><h4>Assignments viewed</h4><div class="viewed-content"><div class="ring">0%</div><div class="legend"><p><i class="dot blue-bg"></i> Opened <b>0</b></p><p><i class="dot grey-bg"></i> Not opened yet <b>0</b></p></div></div></article>
+          <div class="section-label">DUE SOON</div><article class="card muted">No assignments due soon.</article>
+          <div class="quick-grid"><a class="card quick" href="#resources"><span>▱</span><b>Resources</b><small>8 courses</small></a><a class="card quick green" href="#request"><span>♙</span><b>Request to join</b><small>Ask your rep</small></a></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="resources">
+      <div class="page-heading actions"><div><h1>Resources</h1><p>Slides and course materials, organized by course.</p></div><button class="secondary">⇩ Download all</button></div>
+      <input class="search" id="course-search" type="search" placeholder="Search courses...">
+      <div class="resources-grid"><div class="course-grid" id="course-grid"></div><aside><article class="card list-card"><h4>Recent uploads</h4><div id="uploads"></div></article><article class="card offline"><h4>Offline library</h4><p>Save files for access without internet.</p><button class="secondary">Open offline files</button></article></aside></div>
+    </section>
+
+    <section class="page" id="quizzes">
+      <div class="page-heading"><div><h1>Quizzes</h1><p>Practice what you have learned and track your progress.</p></div></div>
+      <div class="quiz-grid" id="quiz-grid"></div>
+    </section>
+
+    <section class="page" id="request">
+      <div class="page-heading"><div><h1>Request to join</h1><p>Not in the list? Fill in your details and the class rep will assign you to a group.</p></div></div>
+      <div class="tabs"><button class="active">Join a group</button><button>Get help</button></div>
+      <div class="request-grid"><div><article class="card form-card"><label>COURSE</label><select><option>Select a course</option><option>Computer Architecture</option><option>Embedded System</option><option>Financial Accounting</option></select><div class="requesting"><span>REQUESTING AS</span><b>Akaribo George · Index 8988923 · Group 1</b></div></article><button class="primary wide" id="send-request">Review and send request</button></div><aside><article class="card steps"><h4>What happens next</h4><ol><li><b>Your rep gets the request</b><small>Sent instantly to the rep for that course.</small></li><li><b>They place you in a group</b><small>Usually within a day. Your preference is a hint, not a guarantee.</small></li><li><b>Resources unlock</b><small>The course appears in Resources and Timetable automatically.</small></li></ol></article><article class="card requests"><h4>Your requests</h4><p id="request-status">No requests sent yet.</p></article></aside></div>
+    </section>
+
+    <section class="page" id="timetable">
+      <div class="page-heading actions"><div><h1>Exam Timetable</h1><p>Your exam schedule for the current exam period, with your assigned venue.</p></div><div class="view-toggle"><button>Week</button><button class="active">List</button></div></div>
+      <div id="schedule"></div>
+    </section>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#home" data-page="home">⌂<span>Home</span></a><a href="#resources" data-page="resources">▱<span>Resources</span></a><a href="#quizzes" data-page="quizzes">?<span>Quizzes</span></a><a href="#request" data-page="request">＋<span>Request</span></a><a href="#timetable" data-page="timetable">▦<span>Timetable</span></a>
+  </nav>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

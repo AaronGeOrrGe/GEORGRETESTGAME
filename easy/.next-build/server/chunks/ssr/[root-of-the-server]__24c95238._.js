@@ -1,0 +1,3 @@
+module.exports=[55483,a=>{a.v({className:"geist_dbbf8c4b-module__5qCx7q__className",variable:"geist_dbbf8c4b-module__5qCx7q__variable"})},27572,a=>{"use strict";a.s(["default",()=>f,"metadata",()=>e],27572);var b=a.i(7997),c=a.i(55483);let d={className:c.default.className,style:{fontFamily:"'Geist', 'Geist Fallback'",fontStyle:"normal"}};null!=c.default.variable&&(d.variable=c.default.variable);let e={title:{default:"Easy",template:"%s · Easy"},description:"Academic resources made easy."};function f({children:a}){return(0,b.jsx)("html",{lang:"en",children:(0,b.jsx)("body",{className:d.variable,children:a})})}}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__24c95238._.js.map
