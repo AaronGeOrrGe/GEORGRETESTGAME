@@ -14,7 +14,38 @@ export async function POST(request: Request) {
   const { fullName, studentId, department, level, email, password, role, accessCode } = body;
   const departments = ["Computer Science", "Information Technology", "Cyber Security"];
   const academicLevel = Number(level);
-  if (!fullName || !studentId || !email || !password || !["student", "course_rep"].includes(role) || !departments.includes(department) || ![100, 200, 300, 400].includes(academicLevel)) return NextResponse.json({ error: "Complete all required fields." }, { status: 400 });
+
+  // Server-side validation
+  if (!fullName || !studentId || !email || !password || !["student", "course_rep"].includes(role) || !departments.includes(department) || ![100, 200, 300, 400].includes(academicLevel)) {
+    return NextResponse.json({ error: "Complete all required fields." }, { status: 400 });
+  }
+
+  // Full name validation
+  const nameRegex = /^[a-zA-Z\s'-]+$/;
+  if (!nameRegex.test(fullName.trim())) {
+    return NextResponse.json({ error: "Full name can only contain letters, spaces, hyphens, and apostrophes." }, { status: 400 });
+  }
+  if (fullName.trim().length < 2) {
+    return NextResponse.json({ error: "Full name must be at least 2 characters." }, { status: 400 });
+  }
+
+  // Student ID validation
+  const idRegex = /^\d{7,8}$/;
+  if (!idRegex.test(studentId.trim())) {
+    return NextResponse.json({ error: "Student ID must be exactly 7 or 8 digits." }, { status: 400 });
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email.trim())) {
+    return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+  }
+
+  // Password validation
+  if (password.length < 8) {
+    return NextResponse.json({ error: "Password must be at least 8 characters." }, { status: 400 });
+  }
+
   if (role === "course_rep" && !valid(accessCode || "")) return NextResponse.json({ error: "Invalid Course Representative Access Code" }, { status: 403 });
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
