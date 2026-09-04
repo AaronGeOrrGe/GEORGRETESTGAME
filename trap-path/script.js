@@ -43,6 +43,7 @@ const game = {
 };
 
 const keys = {};
+const keysPressed = {};
 
 // Utility functions
 function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
@@ -156,13 +157,17 @@ function spawnDeathBurst(player) { spawnParticles(player.x + player.w / 2, playe
 // Input
 window.addEventListener('keydown', (e) => {
   keys[e.code] = true;
+  keysPressed[e.code] = true;
   if (e.code === 'Escape') { e.preventDefault(); togglePause(); }
   if ((game.state === 'start' || game.state === 'gameover') && e.code === 'Space') {
     e.preventDefault();
     // Handled by buttons
   }
 });
-window.addEventListener('keyup', (e) => { keys[e.code] = false; });
+window.addEventListener('keyup', (e) => {
+  keys[e.code] = false;
+  keysPressed[e.code] = false;
+});
 
 function togglePause() {
   if (game.state === 'playing') {
@@ -207,11 +212,14 @@ class Player {
     this.deadTimer = 0;
     this.facing = 1;
     this.riding = null;
+    this.jumpCount = 0;
+    this.maxJumps = 2;
   }
 
   reset(x, y) {
     this.x = x; this.y = y; this.vx = 0; this.vy = 0;
     this.dead = false; this.deadTimer = 0; this.onGround = false; this.climbing = false; this.riding = null;
+    this.jumpCount = 0;
   }
 
   update(dt) {
@@ -232,15 +240,22 @@ class Player {
     }
 
     // Start climbing when pressing up/down on a ladder
-    if (onLadder && (up || down)) this.climbing = true;
+    if (onLadder && (up || down)) {
+      this.climbing = true;
+      this.jumpCount = 0;
+    }
     if (!onLadder) this.climbing = false;
 
     // Climb
     if (this.climbing) {
-      if (jump) {
+      if (keysPressed['Space']) {
         this.climbing = false;
         this.vy = JUMP_SPEED;
         this.onGround = false;
+        this.jumpCount = 1;
+        playJump();
+        spawnJumpDust(this.x + this.w / 2, this.y + this.h);
+        keysPressed['Space'] = false;
       } else {
         const h = (left ? -1 : 0) + (right ? 1 : 0);
         const v = (up ? -1 : 0) + (down ? 1 : 0);
@@ -260,12 +275,16 @@ class Player {
     if (right) { move = 1; this.facing = 1; }
     this.vx = move * MOVE_SPEED;
 
-    if ((jump || up) && this.onGround) {
+    if ((keysPressed['Space'] || keysPressed['ArrowUp'] || keysPressed['KeyW']) && this.jumpCount < this.maxJumps) {
       this.vy = JUMP_SPEED;
       this.onGround = false;
       this.riding = null;
+      this.jumpCount++;
       playJump();
       spawnJumpDust(this.x + this.w / 2, this.y + this.h);
+      keysPressed['Space'] = false;
+      keysPressed['ArrowUp'] = false;
+      keysPressed['KeyW'] = false;
     }
 
     this.vy += GRAVITY * dt;
@@ -310,6 +329,7 @@ class Player {
           this.vy = 0;
           this.onGround = true;
           this.riding = p;
+          this.jumpCount = 0;
         } else if (this.vy < 0) {
           this.y = p.y + p.h;
           this.vy = 0;
@@ -1629,8 +1649,8 @@ function setupMobileControls() {
   if (!left || !right || !jump) return;
 
   function bind(btn, code) {
-    const onDown = (e) => { e.preventDefault(); keys[code] = true; };
-    const onUp = (e) => { e.preventDefault(); keys[code] = false; };
+    const onDown = (e) => { e.preventDefault(); keys[code] = true; keysPressed[code] = true; };
+    const onUp = (e) => { e.preventDefault(); keys[code] = false; keysPressed[code] = false; };
     btn.addEventListener('touchstart', onDown, { passive: false });
     btn.addEventListener('touchend', onUp);
     btn.addEventListener('touchcancel', onUp);
