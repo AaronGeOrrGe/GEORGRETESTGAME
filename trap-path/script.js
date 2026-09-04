@@ -997,12 +997,12 @@ function makeLevel6() {
       new Platform(120, 220, 560, 40)
     ],
     ladders: [
-      new Ladder(350, 966, 60, 234),
-      new Ladder(350, 816, 60, 184),
-      new Ladder(350, 666, 60, 184),
-      new Ladder(350, 516, 60, 184),
-      new Ladder(350, 366, 60, 184),
-      new Ladder(350, 186, 60, 214)
+      new Ladder(300, 966, 60, 234),
+      new Ladder(470, 816, 60, 184),
+      new Ladder(300, 666, 60, 184),
+      new Ladder(470, 516, 60, 184),
+      new Ladder(300, 366, 60, 184),
+      new Ladder(470, 186, 60, 214)
     ],
     spikes: [
       new Spike(320, 1000, 20, 30, true, { x: 0, y: 940, w: 380, h: 80 }),
@@ -1042,14 +1042,14 @@ function makeLevel7() {
       new Platform(200, 350, 800, 40)
     ],
     ladders: [
-      new Ladder(350, 1416, 60, 184),
-      new Ladder(350, 1266, 60, 184),
-      new Ladder(350, 1116, 60, 184),
-      new Ladder(350, 966, 60, 184),
-      new Ladder(350, 816, 60, 184),
-      new Ladder(350, 666, 60, 184),
-      new Ladder(350, 516, 60, 184),
-      new Ladder(350, 316, 60, 234)
+      new Ladder(300, 1416, 60, 184),
+      new Ladder(700, 1266, 60, 184),
+      new Ladder(300, 1116, 60, 184),
+      new Ladder(700, 966, 60, 184),
+      new Ladder(300, 816, 60, 184),
+      new Ladder(700, 666, 60, 184),
+      new Ladder(300, 516, 60, 184),
+      new Ladder(700, 316, 60, 234)
     ],
     spikes: [
       new Spike(180, 1450, 20, 30, true, { x: 400, y: 1390, w: 360, h: 80 }),
@@ -1147,12 +1147,12 @@ function makeLevel9() {
     ],
     ladders: [
       new Ladder(130, 1816, 60, 184),
-      new Ladder(820, 1666, 60, 184),
-      new Ladder(130, 1366, 60, 184),
-      new Ladder(820, 1216, 60, 184),
+      new Ladder(470, 1666, 60, 184),
+      new Ladder(820, 1366, 60, 184),
+      new Ladder(470, 1216, 60, 184),
       new Ladder(130, 916, 60, 184),
-      new Ladder(820, 766, 60, 184),
-      new Ladder(130, 566, 60, 184),
+      new Ladder(470, 766, 60, 184),
+      new Ladder(820, 566, 60, 184),
       new Ladder(680, 500, 60, 100)
     ],
     spikes: [
